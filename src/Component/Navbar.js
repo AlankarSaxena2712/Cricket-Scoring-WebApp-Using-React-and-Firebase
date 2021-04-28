@@ -20,6 +20,9 @@ const Navbar = () => {
                         <li className="nav-item">
                             <NavLink className="nav-link" aria-current="page" to="/create">Create Team</NavLink>
                         </li>
+                        <li className="nav-item">
+                            <NavLink className="nav-link" aria-current="page" to="/scorecard">Scorecard</NavLink>
+                        </li>
                     </ul>
                 </div>
             </div>
