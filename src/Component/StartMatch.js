@@ -1,18 +1,25 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import db from '../Firebase';
 
 const StartMatch = () => {
 
     const [team1, setTeam1] = useState('');
     const [team2, setTeam2] = useState('');
     const [overs, setOvers] = useState('');
+    const [teams, setTeams] = useState([]);
 
     const startMatch = (event) => {
         event.preventDefault();
-        console.log(team1, team2, overs);
         setTeam1('');
         setTeam2('');
         setOvers('');
     }
+
+    useEffect(() => {
+        db.collection('teams').onSnapshot(snapshot => {
+           setTeams(snapshot.docs.map(doc => ({id: doc.id, team: doc.data()})))
+        })
+    })
 
 
     return (
@@ -24,30 +31,24 @@ const StartMatch = () => {
                     <form>
                         <div className="form-group my-3">
                             <label htmlFor="team1Name" className="form-label">Team 1 Name</label>
-                            <select id='team1Name' className="form-select" defaultValue={team1} required onChange={event => setTeam1(event.target.value)}>
+                            <select id='team1Name' className="form-select" defaultValue={team1} required={true} onChange={event => setTeam1(event.target.value)}>
                                 <option disabled value="">Choose Team 1</option>
-                                <option value="RCB">RCB</option>
-                                <option value="DC">DC</option>
-                                <option value="CSK">CSK</option>
-                                <option value="MI">MI</option>
-                                <option value="SRH">SRH</option>
-                                <option value="PBKS">PBKS</option>
-                                <option value="RR">RR</option>
-                                <option value="KKR">KKR</option>
+                                {
+                                    teams.map(({id, team}) => {
+                                       return(<option key={id} value={team.name}>{team.name}</option>)
+                                    })
+                                }
                             </select>
                         </div>
                         <div className="form-group my-3">
                             <label htmlFor="team2Name" className="form-label">Team 2 Name</label>
-                            <select id='team2Name' className="form-select" defaultValue={team2} required onChange={event => setTeam2(event.target.value)} >
+                            <select id='team2Name' className="form-select" defaultValue={team2} required={true} onChange={event => setTeam2(event.target.value)} >
                                 <option disabled value="">Choose Team 2</option>
-                                <option value="RCB">RCB</option>
-                                <option value="DC">DC</option>
-                                <option value="CSK">CSK</option>
-                                <option value="MI">MI</option>
-                                <option value="SRH">SRH</option>
-                                <option value="PBKS">PBKS</option>
-                                <option value="RR">RR</option>
-                                <option value="KKR">KKR</option>
+                                {
+                                    teams.map(({id, team}) => {
+                                       return(<option key={id} value={team.name}>{team.name}</option>)
+                                    })
+                                }
                             </select>
                         </div>
                         <div className="form-group my-3">

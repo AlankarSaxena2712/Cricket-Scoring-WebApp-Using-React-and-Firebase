@@ -18,19 +18,19 @@ const Home = () => {
     return (
         <div className='container'>
             <div className='row mt-4'>
-                <div className="col-md-3">
+                <div className="col-md-4">
                     <MatchCard team1={team1} team2={team2} status={"CSK won by 6 wickets"} />
                 </div>
-                <div className="col-md-3" style={{display: "inline-block"}}>
+                <div className="col-md-4" style={{display: "inline-block"}}>
                     <MatchCard team1={team1} team2={team2} status={"CSK won by 6 wickets"} />
                 </div>
-                <div className="col-md-3" style={{display: "inline-block"}}>
+                <div className="col-md-4" style={{display: "inline-block"}}>
                     <MatchCard team1={team1} team2={team2} status={"CSK won by 6 wickets"} />
                 </div>
-                <div className="col-md-3" style={{display: "inline-block"}}>
+                <div className="col-md-4" style={{display: "inline-block"}}>
                     <MatchCard team1={team1} team2={team2} status={"CSK won by 6 wickets"} />
                 </div>
-                <div className="col-md-3" style={{display: "inline-block"}}>
+                <div className="col-md-4" style={{display: "inline-block"}}>
                     <MatchCard team1={team1} team2={team2} status={"CSK won by 6 wickets"} />
                 </div>
             </div>
